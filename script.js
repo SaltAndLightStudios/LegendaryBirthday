@@ -63,10 +63,10 @@ const masterBallCard = "images/Megaimage Card.png";
 
 // Scroll messages — keyed by ball index (only some balls have scrolls)
 const scrollMessages = {
-    0: "Bhanu! Thank you for bringing so much warmth to our team. Your passion for people is always evident and truly inspires me time and again. Like the Snaps & Giggles channel - I'd have never thought of that and yet it's become such a staple in helping us get to know one another as people outside of work. Thanks for bringing your heart to all you do. Have a beautiful birthday, may it be memorable in all the best ways. - Phoenix",
-    1: "Marshall Runs the Show\n(Bhanu's Birthday Pop)\n\nVerse\nBhanu walks in like it's opening night.\nBig laughs, big vibes-yeah you do it right.\nMarvel on your mind, pop culture on tap.\nAlways down for food and a good group chat.\n\nPre-Chorus\nYou keep it social, you keep it bold,\nMaking work feel fun, never getting old-\nBut we all know who steals the glow:\nThat corgi Marshall runs the show.\n\nChorus\nIt's your birthday-assemble the crew,\nCake on the table and the playlist too.\nYou're the main character, that's the truth,\nBut Marshall runs the show.. and you let him, dude.\nMake a wish, take a bite, let's go-\nHappy Birthday, Bhanu!\n\n- Marna",
-    2: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Maecenas faucibus mollis interdum. Nullam quis risus eget urna mollis ornare vel eu leo. Cras mattis consectetur purus sit amet fermentum. - Daniel",
-    5: "Bhanu! My fearless tuk tuk riding friend.\nThank you for always finding a way to make our work better, our days brighter, and our wins feel more meaningful! Today we celebrate you!!\nI hope your birthday is as legendary as a shiny Pokémon encounter and as epic as a post-credits Marvel scene. You deserve nothing less.\nHere's to you, Bhanu — thank you for being such a wonderful teammate and a true friend. Happy Birthday! 🎂✨ - Lacy"
+    0: "Bhanu!\n\nThank you for bringing so much warmth to our team. Your passion for people is always evident and truly inspires me time and again. Like the Snaps & Giggles channel - I'd have never thought of that and yet it's become such a staple in helping us get to know one another as people outside of work. Thanks for bringing your heart to all you do. Have a beautiful birthday, may it be memorable in all the best ways.\n\n- Phoenix",
+    1: "<strong>Marshall Runs the Show</strong>\n<strong>(Bhanu's Birthday Pop)</strong>\n\n<strong>Verse</strong>\nBhanu walks in like it's opening night.\nBig laughs, big vibes-yeah you do it right.\nMarvel on your mind, pop culture on tap.\nAlways down for food and a good group chat.\n\n<strong>Pre-Chorus</strong>\nYou keep it social, you keep it bold,\nMaking work feel fun, never getting old-\nBut we all know who steals the glow:\nThat corgi Marshall runs the show.\n\n<strong>Chorus</strong>\nIt's your birthday-assemble the crew,\nCake on the table and the playlist too.\nYou're the main character, that's the truth,\nBut Marshall runs the show.. and you let him, dude.\nMake a wish, take a bite, let's go-\nHappy Birthday, Bhanu!\n\n- Marna",
+    2: "Happy Birthday Bhanu!\n\n- Daniel",
+    5: "Bhanu! My fearless tuk tuk riding friend.\nThank you for always finding a way to make our work better, our days brighter, and our wins feel more meaningful! Today we celebrate you!!\nI hope your birthday is as legendary as a shiny Pokémon encounter and as epic as a post-credits Marvel scene. You deserve nothing less.\nHere's to you, Bhanu — thank you for being such a wonderful teammate and a true friend. Happy Birthday! 🎂✨\n\n- Lacy"
 };
 
 // ===================== STATE =====================
@@ -559,7 +559,8 @@ function showScroll(index) {
 
     currentScrollIndex = index;
     const msgEl = document.getElementById('scroll-message-text');
-    msgEl.textContent = message;
+    msgEl.style.fontSize = '';  // Reset any previous auto-sizing
+    msgEl.innerHTML = message;
     msgEl.classList.toggle('two-column', index === 1);
 
     // Reset scroll state
@@ -591,6 +592,21 @@ function showScroll(index) {
     playScrollAppearSound();
 }
 
+function autoSizeScrollText() {
+    const textArea = document.getElementById('scroll-text-area');
+    const msgEl = document.getElementById('scroll-message-text');
+
+    // Get current computed font size as starting point
+    let fontSize = parseFloat(window.getComputedStyle(msgEl).fontSize);
+    const minFontSize = fontSize * 0.5;
+
+    // Shrink until text fits or we hit the minimum
+    while (textArea.scrollHeight > textArea.clientHeight && fontSize > minFontSize) {
+        fontSize -= 0.5;
+        msgEl.style.fontSize = fontSize + 'px';
+    }
+}
+
 function unrollScroll() {
     if (scrollAnimating) return;
     scrollAnimating = true;
@@ -612,6 +628,9 @@ function unrollScroll() {
         closedContainer.style.display = 'none';
         openContainer.style.display = '';  // Clear inline style so CSS class can take effect
         openContainer.classList.add('revealing');
+
+        // Auto-size text to fit the scroll area
+        autoSizeScrollText();
 
         // Phase 3: Reveal text after scroll finishes opening
         setTimeout(() => {

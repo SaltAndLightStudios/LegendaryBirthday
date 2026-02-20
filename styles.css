@@ -308,7 +308,7 @@ h1::after {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.3);
+    transform: translate(-50%, -50%);
     opacity: 0;
     z-index: 100;
     text-align: center;
@@ -316,13 +316,12 @@ h1::after {
 }
 
 #message-modal.revealing {
-    animation: cardReveal 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation: cardReveal 0.4s ease forwards;
 }
 
 @keyframes cardReveal {
-    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
-    60% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
-    100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 #card-container {
@@ -385,13 +384,11 @@ h1::after {
     top: 67%;
     left: 35%;
     width: 30%;
-    height: 24%;
     display: flex;
     align-items: flex-start;
     justify-content: center;
     padding: 1% 1.5%;
     box-sizing: border-box;
-    overflow: hidden;
 }
 
 #message-text {
@@ -665,7 +662,7 @@ h1::after {
     height: 64%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     padding: 10px 15px;
     box-sizing: border-box;
     overflow-y: auto;
@@ -687,10 +684,10 @@ h1::after {
     font-family: 'Cinzel', serif;
     font-size: clamp(0.7rem, 1.8vw, 1.2rem);
     line-height: 1.5;
-    font-weight: 700;
+    font-weight: 400;
     color: #3a2a1a;
     text-shadow: 0px 1px 2px rgba(255,255,255,0.4);
-    text-align: center;
+    text-align: left;
     white-space: pre-wrap;
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -700,7 +697,6 @@ h1::after {
 #scroll-message-text.two-column {
     column-count: 2;
     column-gap: 20px;
-    text-align: left;
     font-size: clamp(0.4rem, 1vw, 0.75rem);
     line-height: 1.35;
 }
