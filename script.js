@@ -64,9 +64,9 @@ const masterBallCard = "images/Megaimage Card.png";
 // Scroll messages — keyed by ball index (only some balls have scrolls)
 const scrollMessages = {
     0: "Bhanu!\n\nThank you for bringing so much warmth to our team. Your passion for people is always evident and truly inspires me time and again. Like the Snaps & Giggles channel - I'd have never thought of that and yet it's become such a staple in helping us get to know one another as people outside of work. Thanks for bringing your heart to all you do. Have a beautiful birthday, may it be memorable in all the best ways.\n\n- Phoenix",
-    1: "<strong>Marshall Runs the Show</strong>\n<strong>(Bhanu's Birthday Pop)</strong>\n\n<strong>Verse</strong>\nBhanu walks in like it's opening night.\nBig laughs, big vibes-yeah you do it right.\nMarvel on your mind, pop culture on tap.\nAlways down for food and a good group chat.\n\n<strong>Pre-Chorus</strong>\nYou keep it social, you keep it bold,\nMaking work feel fun, never getting old-\nBut we all know who steals the glow:\nThat corgi Marshall runs the show.\n\n<strong>Chorus</strong>\nIt's your birthday-assemble the crew,\nCake on the table and the playlist too.\nYou're the main character, that's the truth,\nBut Marshall runs the show.. and you let him, dude.\nMake a wish, take a bite, let's go-\nHappy Birthday, Bhanu!\n\n- Marna",
-    2: "Happy Birthday Bhanu!\n\n- Daniel",
-    5: "Bhanu! My fearless tuk tuk riding friend.\nThank you for always finding a way to make our work better, our days brighter, and our wins feel more meaningful! Today we celebrate you!!\nI hope your birthday is as legendary as a shiny Pokémon encounter and as epic as a post-credits Marvel scene. You deserve nothing less.\nHere's to you, Bhanu — thank you for being such a wonderful teammate and a true friend. Happy Birthday! 🎂✨\n\n- Lacy"
+    1: "<strong>Marshall Runs the Show</strong>\n<strong>(Bhanu's Birthday Pop)</strong>\n\n<strong>Verse</strong>\nBhanu walks in like it's opening night.\nBig laughs, big vibes-yeah you do it right.\nMarvel on your mind, pop culture on tap.\nAlways down for food and a good group chat.\n\n<strong>Pre-Chorus</strong>\nYou keep it social, you keep it bold,\nMaking work feel fun, never getting old-\nBut we all know who steals the glow:\nThat corgi Marshall runs the show.\n\n<strong>Chorus</strong>\nIt's your birthday-assemble the crew,\nCake on the table and the playlist too.\nYou're the main character, that's the truth,\nBut Marshall runs the show.. and you let him, dude.\nMake a wish, take a bite, let's go-\nHappy Birthday, Bhanu!🎉\n\n- Marna",
+    2: "Dear Bhanu,\n\nHappy Birthday! I wish you many unforgettable moments in the year to come and that you enjoy every single second of it 🙂\n I hope you continue to dig deeper into your passions and find meaning in all your activities and experiences (while having lots of fun along the way!) Have an amazing. day, celebrate big, and be blessed! 🎉✨\n\n- Daniel",
+    5: "Bhanu! My fearless tuk tuk riding friend.\n\nThank you for always finding a way to make our work better, our days brighter, and our wins feel more meaningful! Today we celebrate you!!\nI hope your birthday is as legendary as a shiny Pokémon encounter and as epic as a post-credits Marvel scene. You deserve nothing less.\nHere's to you, Bhanu — thank you for being such a wonderful teammate and a true friend. Happy Birthday! 🎂✨\n\n- Lacy"
 };
 
 // ===================== STATE =====================
@@ -376,9 +376,27 @@ function buildStatsHTML(stats) {
     return html;
 }
 
+function autoSizeStats() {
+    const wrapper = document.getElementById('message-content-wrapper');
+    const block = wrapper.querySelector('.stats-block');
+    if (!block || !wrapper.clientHeight) return;
+
+    // Reset any previous zoom
+    block.style.zoom = '';
+
+    let zoom = 1;
+    const minZoom = 0.5;
+
+    while (wrapper.scrollHeight > wrapper.clientHeight && zoom > minZoom) {
+        zoom -= 0.05;
+        block.style.zoom = zoom;
+    }
+}
+
 function renderStats(index, element, animate) {
     const stats = getStatsForIndex(index);
     element.innerHTML = buildStatsHTML(stats);
+    autoSizeStats();
     document.getElementById('modal-close-btn').style.visibility = 'hidden';
 
     const block = element.querySelector('.stats-block');

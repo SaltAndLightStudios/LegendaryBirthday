@@ -384,11 +384,13 @@ h1::after {
     top: 67%;
     left: 35%;
     width: 30%;
+    height: 24%;
     display: flex;
     align-items: flex-start;
     justify-content: center;
     padding: 1% 1.5%;
     box-sizing: border-box;
+    overflow-y: auto;
 }
 
 #message-text {
