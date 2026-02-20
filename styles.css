@@ -982,3 +982,160 @@ h1::after {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+
+/* ===================== MOBILE ===================== */
+@media (max-width: 768px) {
+
+    /* --- Titles --- */
+    h1 {
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+    }
+
+    h1::after {
+        margin: 8px auto 12px;
+    }
+
+    /* --- Intro --- */
+    #intro-text-overlay h1 {
+        font-size: clamp(0.9rem, 5vw, 1.3rem);
+    }
+
+    #press-start {
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        margin-top: 10px;
+    }
+
+    /* --- Pokeballs --- */
+    .pokeball {
+        width: min(420px, 28vw);
+    }
+
+    #pokeball-container {
+        max-width: calc(min(420px, 28vw) * 3 + 50px);
+        gap: 10px;
+    }
+
+    /* --- Progress Tracker --- */
+    #progress-tracker {
+        margin-top: 15px;
+        gap: 8px;
+    }
+
+    .tracker-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .legendary-dot {
+        width: 12px;
+        height: 12px;
+    }
+
+    /* --- Card Modal --- */
+    #card-image {
+        max-height: 70vh;
+    }
+
+    #card-back-face img {
+        max-height: 70vh;
+    }
+
+    .close-btn {
+        padding: 6px 16px;
+        font-size: 0.85rem;
+        margin-top: 10px;
+    }
+
+    /* --- Scrolls --- */
+    #scroll-open-container img {
+        max-height: 70vh;
+    }
+
+    #scroll-text-area {
+        padding: 6px 10px;
+    }
+
+    #scroll-message-text {
+        font-size: clamp(0.5rem, 3vw, 0.9rem);
+    }
+
+    #scroll-message-text.two-column {
+        column-count: 1;
+        font-size: clamp(0.45rem, 2.5vw, 0.75rem);
+    }
+
+    #scroll-tap-hint {
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+    }
+
+    /* --- Master Ball --- */
+    #master-ball-view h1 {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+        padding: 0 15px;
+    }
+
+    /* --- Pokedex --- */
+    #pokedex-panel {
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    #pokedex-panel h2 {
+        font-size: 1.3rem;
+    }
+
+    .pokedex-hint {
+        font-size: 0.7rem;
+    }
+
+    .pokedex-card-wrap img {
+        max-height: 50vh;
+    }
+
+    .pokedex-message .type-badge,
+    .pokedex-message .attack-name {
+        font-size: clamp(0.3rem, 1.8vw, 0.5rem);
+    }
+
+    .pokedex-message .stats-hp,
+    .pokedex-message .attack-dmg {
+        font-size: clamp(0.3rem, 2vw, 0.55rem);
+    }
+
+    .pokedex-message .attack-desc {
+        font-size: clamp(0.25rem, 1.3vw, 0.4rem);
+    }
+
+    .pokedex-message .stats-footer {
+        font-size: clamp(0.25rem, 1.3vw, 0.4rem);
+    }
+
+    .pokedex-message .stats-footer .footer-badge {
+        font-size: clamp(0.22rem, 1.1vw, 0.35rem);
+    }
+
+    /* --- Final Screen --- */
+    #final-screen h1 {
+        font-size: 1.5rem;
+        padding: 0 15px;
+    }
+
+    #final-screen p {
+        font-size: 1rem;
+    }
+
+    #final-screen img {
+        max-width: 85vw;
+        margin-bottom: 10px;
+    }
+
+    .replay-btn {
+        font-size: 0.85rem;
+        padding: 8px 20px;
+    }
+}
