@@ -1,17 +1,17 @@
 // ===================== DATA =====================
-const pokemonStats = [
+const critterStats = [
     {   // Emberbelly
         type: "Fire", hp: 70,
         attacks: [
-            { name: "Ember Burst", damage: 30, desc: "A warm belly glow that singes foes." },
+            { name: "Ember Burst", damage: 30, desc: "A warm glow that singes foes." },
             { name: "Lava Cuddle", damage: 50, desc: "A cozy magma hug. Always crits on birthdays." }
         ],
         weakness: "Water", resistance: "Grass"
     },
-    {   // Mystitoot
+    {   // Mystihoot
         type: "Psychic", hp: 60,
         attacks: [
-            { name: "Arcane Hoot", damage: 20, desc: "A mystical screech that confuses the target." },
+            { name: "Arcane Hoot", damage: 20, desc: "A mystical hoot that calms the target." },
             { name: "Spellbook Slam", damage: 60, desc: "Drops ancient knowledge. Super effective on Mondays." }
         ],
         weakness: "Dark", resistance: "Fighting"
@@ -19,7 +19,7 @@ const pokemonStats = [
     {   // Lochling
         type: "Water", hp: 90,
         attacks: [
-            { name: "Tidal Splash", damage: 30, desc: "Summons a playful wave from the loch." },
+            { name: "Tidal Splash", damage: 30, desc: "Summons a wave from the knowledge." },
             { name: "Deep Dive", damage: 70, desc: "Vanishes into the depths, then strikes." }
         ],
         weakness: "Electric", resistance: "Fire"
@@ -28,7 +28,7 @@ const pokemonStats = [
         type: "Ghost", hp: 60,
         attacks: [
             { name: "Eerie Glow", damage: 20, desc: "A haunting light that lowers the foe's guard." },
-            { name: "Cave Collapse", damage: 80, desc: "Brings the ceiling down. Lumistone floats through it." }
+            { name: "Cave Collapse", damage: 80, desc: "Brings the ceiling down." }
         ],
         weakness: "Ghost", resistance: "Normal"
     },
@@ -39,6 +39,30 @@ const pokemonStats = [
             { name: "Bloom Burst", damage: 60, desc: "Unleashes a petal explosion. Smells amazing." }
         ],
         weakness: "Fire", resistance: "Water"
+    },
+    {   // Brunomon
+        type: "Magic", hp: 80,
+        attacks: [
+            { name: "Loyal Guard", damage: 20, desc: "Stands firm. Gains strength from unwavering devotion." },
+            { name: "Arcane Oath", damage: 70, desc: "A spell sealed by loyalty. Never misses a friend." }
+        ],
+        weakness: "Dark", resistance: "Psychic"
+    },
+    {   // Cerceon
+        type: "Dragon", hp: 100,
+        attacks: [
+            { name: "Iron Paw Decree", damage: 40, desc: "Rules with an adorable iron fist." },
+            { name: "Fluffy Fury", damage: 90, desc: "Don't let the fluff fool you. She means business." }
+        ],
+        weakness: "Ice", resistance: "Fire"
+    },
+    {   // Marspark
+        type: "Electric", hp: 55,
+        attacks: [
+            { name: "Puppy Eyes", damage: 15, desc: "An irresistible gaze. Target loses all will to fight." },
+            { name: "Shame Stare", damage: 65, desc: "Judges you silently. Super effective on treat-hiders." }
+        ],
+        weakness: "Ground", resistance: "Steel"
     }
 ];
 
@@ -51,32 +75,65 @@ const masterBallStats = {
     weakness: "Ice", resistance: "Fire"
 };
 
-const pokemonCardImages = [
+const critterCardImages = [
     "images/GPST Cards/Emberbelly Card.png",
-    "images/GPST Cards/Mystitoot Card.png",
+    "images/GPST Cards/Mystihoot Card.png",
     "images/GPST Cards/Lochling Card.png",
     "images/GPST Cards/Lumistone Card.png",
-    "images/GPST Cards/Sproutling Card.png"
+    "images/GPST Cards/Sproutling Card.png",
+    "images/GPST Cards/Brunomon Card.png",
+    "images/GPST Cards/Cerceon Card.png",
+    "images/GPST Cards/Marspark Card.png"
 ];
 
 const masterBallCard = "images/Megaimage Card.png";
 
-// Scroll messages — keyed by ball index (only some balls have scrolls)
-const scrollMessages = {
-    0: "Bhanu!\n\nThank you for bringing so much warmth to our team. Your passion for people is always evident and truly inspires me time and again. Like the Snaps & Giggles channel - I'd have never thought of that and yet it's become such a staple in helping us get to know one another as people outside of work. Thanks for bringing your heart to all you do. Have a beautiful birthday, may it be memorable in all the best ways.\n\n- Phoenix",
-    1: "<strong>Marshall Runs the Show</strong>\n<strong>(Bhanu's Birthday Pop)</strong>\n\n<strong>Verse</strong>\nBhanu walks in like it's opening night.\nBig laughs, big vibes-yeah you do it right.\nMarvel on your mind, pop culture on tap.\nAlways down for food and a good group chat.\n\n<strong>Pre-Chorus</strong>\nYou keep it social, you keep it bold,\nMaking work feel fun, never getting old-\nBut we all know who steals the glow:\nThat corgi Marshall runs the show.\n\n<strong>Chorus</strong>\nIt's your birthday-assemble the crew,\nCake on the table and the playlist too.\nYou're the main character, that's the truth,\nBut Marshall runs the show.. and you let him, dude.\nMake a wish, take a bite, let's go-\nHappy Birthday, Bhanu!🎉\n\n- Marna",
-    2: "Dear Bhanu,\n\nHappy Birthday! I wish you many unforgettable moments in the year to come and that you enjoy every single second of it 🙂\n I hope you continue to dig deeper into your passions and find meaning in all your activities and experiences (while having lots of fun along the way!) Have an amazing. day, celebrate big, and be blessed! 🎉✨\n\n- Daniel",
-    5: "Bhanu! My fearless tuk tuk riding friend.\n\nThank you for always finding a way to make our work better, our days brighter, and our wins feel more meaningful! Today we celebrate you!!\nI hope your birthday is as legendary as a shiny Pokémon encounter and as epic as a post-credits Marvel scene. You deserve nothing less.\nHere's to you, Bhanu — thank you for being such a wonderful teammate and a true friend. Happy Birthday! 🎂✨\n\n- Lacy"
-};
+// Scroll messages — randomly assigned to pokeballs each game
+const regularScrollMessages = [
+    "Bhanu!\n\nThank you for bringing so much warmth to our team. Your passion for people is always evident and truly inspires me time and again. Like the Snaps & Giggles channel - I'd have never thought of that and yet it's become such a staple in helping us get to know one another as people outside of work. Thanks for bringing your heart to all you do. Have a beautiful birthday, may it be memorable in all the best ways.\n\n- Phoenix",
+    "<strong>Marshall Runs the Show</strong>\n<strong>(Bhanu's Birthday Pop)</strong>\n\n<strong>Verse</strong>\nBhanu walks in like it's opening night.\nBig laughs, big vibes-yeah you do it right.\nMarvel on your mind, pop culture on tap.\nAlways down for food and a good group chat.\n\n<strong>Pre-Chorus</strong>\nYou keep it social, you keep it bold,\nMaking work feel fun, never getting old-\nBut we all know who steals the glow:\nThat corgi Marshall runs the show.\n\n<strong>Chorus</strong>\nIt's your birthday-assemble the crew,\nCake on the table and the playlist too.\nYou're the main character, that's the truth,\nBut Marshall runs the show.. and you let him, dude.\nMake a wish, take a bite, let's go-\nHappy Birthday, Bhanu!🎉\n\n- Marna",
+    "Dear Bhanu,\n\nHappy Birthday! I wish you many unforgettable moments in the year to come and that you enjoy every single second of it 🙂\n I hope you continue to dig deeper into your passions and find meaning in all your activities and experiences (while having lots of fun along the way!) Have an amazing. day, celebrate big, and be blessed! 🎉✨\n\n- Daniel",
+    "Happy Birthday, Bhanu!\n\nYou are such a positive culture champion for us and I hope you have a great birthday week ahead!\n\n- Brody",
+    "Bhanu! My fearless tuk tuk riding friend.\n\nThank you for always finding a way to make our work better, our days brighter, and our wins feel more meaningful! Today we celebrate you!!\nI hope your birthday is as legendary as a shiny Pokémon encounter and as epic as a post-credits Marvel scene. You deserve nothing less.\nHere's to you, Bhanu — thank you for being such a wonderful teammate and a true friend. Happy Birthday! 🎂✨\n\n- Lacy"
+];
+let scrollMessages = {};
+
+function randomizeScrolls() {
+    scrollMessages = {};
+    // Pick random ball indices for each regular scroll message
+    const indices = Array.from({ length: totalRegularBalls }, (_, i) => i);
+    for (let i = indices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+    regularScrollMessages.forEach((msg, i) => {
+        scrollMessages[indices[i]] = msg;
+    });
+}
+
+// Card shuffle — maps ball index → card/stats index
+let cardShuffleMap = [0, 1, 2, 3, 4, 5, 6, 7];
+let reverseCardMap = [0, 1, 2, 3, 4, 5, 6, 7];
+
+function randomizeCards() {
+    cardShuffleMap = Array.from({ length: totalRegularBalls }, (_, i) => i);
+    for (let i = cardShuffleMap.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [cardShuffleMap[i], cardShuffleMap[j]] = [cardShuffleMap[j], cardShuffleMap[i]];
+    }
+    cardShuffleMap.forEach((cardIdx, ballIdx) => {
+        reverseCardMap[cardIdx] = ballIdx;
+    });
+}
 
 // ===================== STATE =====================
 let openedCount = 0;
-const totalRegularBalls = 5;
-const openedStatus = [false, false, false, false, false];
+const totalRegularBalls = 8;
+const openedStatus = [false, false, false, false, false, false, false, false];
 let masterBallShown = false;
 let masterBallOpened = false;
 let isAnimating = false;
-let viewingFromPokedex = false;
+let viewingFromCardDeck = false;
 let currentCardIndex = -1;
 let statsRevealing = false;
 let statsRevealTimers = [];
@@ -85,6 +142,7 @@ let pendingScrollIndex = -1;
 let currentScrollIndex = -1;
 const scrollShownStatus = {};
 let scrollAnimating = false;
+let scrollsFound = 0;
 let bgmPlaying = false;
 let bgmTimer = null;
 
@@ -324,6 +382,8 @@ function screenTransition(callback) {
 // ===================== INTRO / START =====================
 
 function startGame() {
+    randomizeScrolls();
+    randomizeCards();
     screenTransition(() => {
         document.getElementById('intro-screen').style.display = 'none';
         document.getElementById('main-view').style.display = 'flex';
@@ -341,8 +401,8 @@ function startGame() {
 // ===================== STATS RENDERING =====================
 
 function getStatsForIndex(index) {
-    if (index === 5) return masterBallStats;
-    return pokemonStats[index];
+    if (index === 8) return masterBallStats;
+    return critterStats[index];
 }
 
 function buildStatsHTML(stats) {
@@ -463,7 +523,7 @@ function showCard(cardSrc, index, skipFlip) {
     const msgEl = document.getElementById('message-text');
 
     if (skipFlip) {
-        // From Pokedex — show front immediately
+        // From Card Deck — show front immediately
         flipper.classList.add('flipped');
         setTimeout(() => {
             renderStats(index, msgEl, true);
@@ -506,19 +566,18 @@ function openBall(index) {
             if (!openedStatus[index]) {
                 openedStatus[index] = true;
                 openedCount++;
-                document.getElementById(`dot-${index}`).classList.add('opened');
             }
 
-            // Show Pokedex button after first card
-            document.getElementById('pokedex-btn').style.display = 'block';
+            // Show Card Deck button after first card
+            document.getElementById('card-deck-btn').style.display = 'block';
 
             // Step 4: Set pending scroll if this ball has one
             if (scrollMessages[index] !== undefined) {
                 pendingScrollIndex = index;
             }
 
-            // Step 5: Show card
-            showCard(pokemonCardImages[index], index);
+            // Step 5: Show card (use shuffled card mapping)
+            showCard(critterCardImages[cardShuffleMap[index]], cardShuffleMap[index]);
             isAnimating = false;
         }, 400);
     }, 1200);
@@ -538,8 +597,8 @@ function closeModal() {
     document.getElementById('card-flipper').classList.remove('flipped');
     setTimeout(() => { overlay.style.display = 'none'; }, 400);
 
-    if (viewingFromPokedex) {
-        viewingFromPokedex = false;
+    if (viewingFromCardDeck) {
+        viewingFromCardDeck = false;
         return;
     }
 
@@ -579,7 +638,7 @@ function showScroll(index) {
     const msgEl = document.getElementById('scroll-message-text');
     msgEl.style.fontSize = '';  // Reset any previous auto-sizing
     msgEl.innerHTML = message;
-    msgEl.classList.toggle('two-column', index === 1);
+    msgEl.classList.toggle('two-column', message.includes('Marshall Runs the Show'));
 
     // Reset scroll state
     const closedContainer = document.getElementById('scroll-closed-container');
@@ -623,6 +682,13 @@ function autoSizeScrollText() {
         fontSize -= 0.5;
         msgEl.style.fontSize = fontSize + 'px';
     }
+
+    // If content still overflows after shrinking, switch to top-aligned for scrolling
+    if (textArea.scrollHeight > textArea.clientHeight) {
+        textArea.style.alignItems = 'flex-start';
+    } else {
+        textArea.style.alignItems = '';
+    }
 }
 
 function unrollScroll() {
@@ -634,7 +700,11 @@ function unrollScroll() {
     const textArea = document.getElementById('scroll-text-area');
     const closeBtn = document.getElementById('scroll-close-btn');
 
-    // Mark this scroll as seen
+    // Mark this scroll as seen and update tracker
+    if (!scrollShownStatus[currentScrollIndex]) {
+        document.getElementById(`dot-${scrollsFound}`).classList.add('opened');
+        scrollsFound++;
+    }
     scrollShownStatus[currentScrollIndex] = true;
 
     // Phase 1: Glow and shrink the closed scroll
@@ -673,9 +743,9 @@ function closeScroll() {
 
     setTimeout(() => { overlay.style.display = 'none'; }, 400);
 
-    // If viewing from Pokedex, just close
-    if (viewingFromPokedex) {
-        viewingFromPokedex = false;
+    // If viewing from Card Deck, just close
+    if (viewingFromCardDeck) {
+        viewingFromCardDeck = false;
         return;
     }
 
@@ -691,7 +761,7 @@ function showMasterBall() {
 
     screenTransition(() => {
         document.getElementById('main-view').style.display = 'none';
-        document.getElementById('pokedex-btn').style.display = 'none';
+        document.getElementById('card-deck-btn').style.display = 'none';
         document.getElementById('master-ball-view').style.display = 'flex';
         playMasterBallAppear();
     });
@@ -749,12 +819,7 @@ function openMasterBall() {
                 masterBallOpened = true;
                 document.getElementById('dot-5').classList.add('opened');
 
-                // Lacy's master ball has a scroll
-                if (scrollMessages[5] !== undefined) {
-                    pendingScrollIndex = 5;
-                }
-
-                showCard(masterBallCard, 5);
+                showCard(masterBallCard, 8);
                 isAnimating = false;
             }, 400);
         }, 1200);
@@ -768,43 +833,47 @@ function triggerFinale() {
     screenTransition(() => {
         document.getElementById('master-ball-view').style.display = 'none';
         document.getElementById('main-view').style.display = 'none';
-        document.getElementById('pokedex-btn').style.display = 'none';
+        document.getElementById('card-deck-btn').style.display = 'none';
         document.getElementById('final-screen').style.display = 'flex';
         playFanfare();
     });
 }
 
-// ===================== POKEDEX =====================
+// ===================== CARD DECK =====================
 
-function openPokedex() {
-    const grid = document.getElementById('pokedex-grid');
+function openCardDeck() {
+    const grid = document.getElementById('card-deck-grid');
     grid.innerHTML = '';
 
-    const allCards = [...pokemonCardImages, masterBallCard];
-    const allStatus = [...openedStatus, masterBallOpened];
+    const allCards = [...critterCardImages, masterBallCard];
+    // Map card status using reverse card map (card index → ball index)
+    const allStatus = [
+        ...Array.from({ length: 8 }, (_, i) => openedStatus[reverseCardMap[i]]),
+        masterBallOpened
+    ];
 
     allCards.forEach((card, i) => {
         const entry = document.createElement('div');
-        entry.className = 'pokedex-entry' + (allStatus[i] ? '' : ' locked');
+        entry.className = 'card-deck-entry' + (allStatus[i] ? '' : ' locked');
 
         if (allStatus[i]) {
             const wrap = document.createElement('div');
-            wrap.className = 'pokedex-card-wrap';
+            wrap.className = 'card-deck-card-wrap';
 
             const img = document.createElement('img');
             img.src = card;
             wrap.appendChild(img);
 
             const msgBox = document.createElement('div');
-            msgBox.className = 'pokedex-message';
-            const statsIndex = (i < 5) ? i : 5;
+            msgBox.className = 'card-deck-message';
+            const statsIndex = (i < 8) ? i : 8;
             msgBox.innerHTML = buildStatsHTML(getStatsForIndex(statsIndex));
             wrap.appendChild(msgBox);
 
             entry.appendChild(wrap);
 
-            // Add "View Scroll" button if this ball's scroll has been seen
-            const scrollIdx = (i < 5) ? i : 5;
+            // Add "View Scroll" button if this card's ball had a scroll that was seen
+            const scrollIdx = (i < 8) ? reverseCardMap[i] : 8;
             if (scrollShownStatus[scrollIdx]) {
                 const scrollBtn = document.createElement('button');
                 scrollBtn.className = 'close-btn';
@@ -814,8 +883,8 @@ function openPokedex() {
                 scrollBtn.textContent = 'View Scroll';
                 scrollBtn.onclick = function(e) {
                     e.stopPropagation();
-                    closePokedex();
-                    viewingFromPokedex = true;
+                    closeCardDeck();
+                    viewingFromCardDeck = true;
                     showScroll(scrollIdx);
                 };
                 entry.appendChild(scrollBtn);
@@ -827,39 +896,41 @@ function openPokedex() {
         grid.appendChild(entry);
     });
 
-    document.getElementById('pokedex-overlay').style.display = 'flex';
+    document.getElementById('card-deck-overlay').style.display = 'flex';
 }
 
-function closePokedex() {
-    document.getElementById('pokedex-overlay').style.display = 'none';
+function closeCardDeck() {
+    document.getElementById('card-deck-overlay').style.display = 'none';
 }
 
-function viewPokedexCard(index) {
-    closePokedex();
-    viewingFromPokedex = true;
+function viewCardDeckCard(index) {
+    closeCardDeck();
+    viewingFromCardDeck = true;
 
-    const allCards = [...pokemonCardImages, masterBallCard];
-    // index 0-4 map to pokemonStats, index 5 maps to masterBallStats
-    const statsIndex = (index < 5) ? index : 5;
+    const allCards = [...critterCardImages, masterBallCard];
+    // index 0-7 map to critterStats, index 8 maps to masterBallStats
+    const statsIndex = (index < 8) ? index : 8;
 
     showCard(allCards[index], statsIndex, true);
 }
 
-// ===================== FINALE POKEDEX / DOWNLOAD =====================
+// ===================== FINALE CARD DECK / DOWNLOAD =====================
 
-function openPokedexFromFinale() {
-    openPokedex();
+function openCardDeckFromFinale() {
+    openCardDeck();
 }
 
 // ===================== REPLAY =====================
 
 function replay() {
+    randomizeScrolls();
+    randomizeCards();
     openedCount = 0;
     isAnimating = false;
     masterBallShown = false;
     masterBallOpened = false;
     masterBallAttempts = 0;
-    viewingFromPokedex = false;
+    viewingFromCardDeck = false;
     currentCardIndex = -1;
     statsRevealing = false;
     statsRevealTimers.forEach(t => clearTimeout(t));
@@ -868,18 +939,21 @@ function replay() {
     currentScrollIndex = -1;
     Object.keys(scrollShownStatus).forEach(k => delete scrollShownStatus[k]);
     scrollAnimating = false;
+    scrollsFound = 0;
 
     for (let i = 0; i < totalRegularBalls; i++) {
         openedStatus[i] = false;
         document.getElementById(`ball-${i}`).src = 'images/pokeball.png';
+    }
+    // Reset scroll tracker dots (5 scroll dots + 1 legendary)
+    for (let i = 0; i <= 5; i++) {
         document.getElementById(`dot-${i}`).classList.remove('opened', 'all-done');
     }
-    document.getElementById('dot-5').classList.remove('opened', 'all-done');
     document.getElementById('ball-master').src = 'images/Legendary Ball.png';
     document.getElementById('ball-master').style.animation = '';
     document.querySelector('#master-ball-view h1').textContent = 'A Legendary Poke Ball Appears!';
     document.getElementById('pokeball-container').classList.remove('entered');
-    document.getElementById('pokedex-btn').style.display = 'none';
+    document.getElementById('card-deck-btn').style.display = 'none';
     stopBGM();
 
     screenTransition(() => {

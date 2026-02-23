@@ -19,7 +19,7 @@
         <div id="intro-scroll-wrap">
             <img id="intro-scroll-bg" src="images/Scroll Open.png" alt="Scroll background">
             <div id="intro-text-overlay">
-                <h1>Trainer Bhanu's Birthday Adventure</h1>
+                <h1>Bhanu's Birthday Adventure</h1>
                 <div id="press-start">- Press Start -</div>
             </div>
         </div>
@@ -27,7 +27,9 @@
 
     <!-- Main View -->
     <div id="main-view">
-        <h1>Can You Catch 'Em All?</h1>
+        <h1 class="no-rule">Can You Catch 'Em All</h1>
+        <h1 class="no-rule">And</h1>
+        <h1>Find All Of The Birthday Messages?</h1>
         <div id="pokeball-container">
             <div class="pokeball-slot">
                 <img src="images/pokeball.png" class="pokeball" onclick="openBall(0)" id="ball-0" alt="Pokeball">
@@ -43,6 +45,15 @@
             </div>
             <div class="pokeball-slot">
                 <img src="images/pokeball.png" class="pokeball" onclick="openBall(4)" id="ball-4" alt="Pokeball">
+            </div>
+            <div class="pokeball-slot">
+                <img src="images/pokeball.png" class="pokeball" onclick="openBall(5)" id="ball-5" alt="Pokeball">
+            </div>
+            <div class="pokeball-slot">
+                <img src="images/pokeball.png" class="pokeball" onclick="openBall(6)" id="ball-6" alt="Pokeball">
+            </div>
+            <div class="pokeball-slot">
+                <img src="images/pokeball.png" class="pokeball" onclick="openBall(7)" id="ball-7" alt="Pokeball">
             </div>
         </div>
         <div id="progress-tracker">
@@ -65,7 +76,7 @@
                 </div>
                 <div id="card-front">
                     <div id="card-image-container">
-                        <img id="card-image" src="" alt="Pokemon Card">
+                        <img id="card-image" src="" alt="Pocket Critter Card">
                         <div id="message-content-wrapper">
                             <div id="message-text"></div>
                         </div>
@@ -94,28 +105,28 @@
 
     <!-- Master Ball View -->
     <div id="master-ball-view">
-        <h1>A Legendary Poke Ball Appears!</h1>
+        <h1>A Legendary Creature Appears!</h1>
         <img src="images/Legendary Ball.png" class="pokeball master-ball" onclick="openMasterBall()" id="ball-master" alt="Legendary Ball">
     </div>
 
     <!-- Card Deck -->
-    <button id="pokedex-btn" onclick="openPokedex()">Card Deck</button>
-    <div id="pokedex-overlay">
-        <div id="pokedex-panel">
+    <button id="card-deck-btn" onclick="openCardDeck()">Card Deck</button>
+    <div id="card-deck-overlay">
+        <div id="card-deck-panel">
             <h2>Card Deck</h2>
-            <div class="pokedex-grid" id="pokedex-grid"></div>
-            <p class="pokedex-hint">Right-click → Save As to save each card, or use Ctrl/Cmd+P to print the page as a PDF</p>
-            <button class="close-btn" onclick="closePokedex()">Close</button>
+            <div class="card-deck-grid" id="card-deck-grid"></div>
+            <p class="card-deck-hint">Right-click → Save As to save each card, or use Ctrl/Cmd+P to print the page as a PDF</p>
+            <button class="close-btn" onclick="closeCardDeck()">Close</button>
         </div>
     </div>
 
     <!-- Final Screen -->
     <div id="final-screen">
-        <img src="images/Megaimage.png" alt="Legendary Pokemon">
+        <img src="images/Megaimage.png" alt="Legendary Pocket Critter">
         <h1>Happy Birthday Bhanu!</h1>
         <p>May your year be legendary.</p>
         <div id="final-buttons">
-            <button class="close-btn replay-btn" onclick="openPokedexFromFinale()">View Card Deck</button>
+            <button class="close-btn replay-btn" onclick="openCardDeckFromFinale()">View Card Deck</button>
             <button class="close-btn replay-btn" onclick="replay()">Replay</button>
         </div>
     </div>

@@ -162,13 +162,22 @@ h1::after {
     z-index: 10;
 }
 
+#main-view h1 {
+    margin: 0;
+    line-height: 1.2;
+}
+
+h1.no-rule::after {
+    display: none;
+}
+
 #pokeball-container {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
     justify-content: center;
     align-items: center;
-    max-width: calc(min(420px, 25vw) * 3 + 60px);
+    max-width: calc(min(300px, 18vw) * 4 + 75px);
     z-index: 10;
 }
 
@@ -179,24 +188,30 @@ h1::after {
     transition: opacity 0.4s ease, translate 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Top row: 3 balls in an arc */
-.pokeball-slot:nth-child(1) { transform: translateY(15px) rotate(-6deg); }
-.pokeball-slot:nth-child(2) { transform: translateY(0px); }
-.pokeball-slot:nth-child(3) { transform: translateY(15px) rotate(6deg); }
-/* Bottom row: 2 balls */
-.pokeball-slot:nth-child(4) { transform: rotate(-4deg); }
-.pokeball-slot:nth-child(5) { transform: rotate(4deg); }
+/* Top row: 4 balls in an arc */
+.pokeball-slot:nth-child(1) { transform: translateY(12px) rotate(-5deg); }
+.pokeball-slot:nth-child(2) { transform: translateY(0px) rotate(-2deg); }
+.pokeball-slot:nth-child(3) { transform: translateY(0px) rotate(2deg); }
+.pokeball-slot:nth-child(4) { transform: translateY(12px) rotate(5deg); }
+/* Bottom row: 4 balls in an arc */
+.pokeball-slot:nth-child(5) { transform: translateY(12px) rotate(-5deg); }
+.pokeball-slot:nth-child(6) { transform: translateY(0px) rotate(-2deg); }
+.pokeball-slot:nth-child(7) { transform: translateY(0px) rotate(2deg); }
+.pokeball-slot:nth-child(8) { transform: translateY(12px) rotate(5deg); }
 
 /* Staggered entrance */
 #pokeball-container.entered .pokeball-slot { opacity: 1; translate: 0 0; }
 #pokeball-container.entered .pokeball-slot:nth-child(1) { transition-delay: 0s; }
-#pokeball-container.entered .pokeball-slot:nth-child(2) { transition-delay: 0.12s; }
-#pokeball-container.entered .pokeball-slot:nth-child(3) { transition-delay: 0.24s; }
-#pokeball-container.entered .pokeball-slot:nth-child(4) { transition-delay: 0.4s; }
-#pokeball-container.entered .pokeball-slot:nth-child(5) { transition-delay: 0.52s; }
+#pokeball-container.entered .pokeball-slot:nth-child(2) { transition-delay: 0.1s; }
+#pokeball-container.entered .pokeball-slot:nth-child(3) { transition-delay: 0.2s; }
+#pokeball-container.entered .pokeball-slot:nth-child(4) { transition-delay: 0.3s; }
+#pokeball-container.entered .pokeball-slot:nth-child(5) { transition-delay: 0.45s; }
+#pokeball-container.entered .pokeball-slot:nth-child(6) { transition-delay: 0.55s; }
+#pokeball-container.entered .pokeball-slot:nth-child(7) { transition-delay: 0.65s; }
+#pokeball-container.entered .pokeball-slot:nth-child(8) { transition-delay: 0.75s; }
 
 .pokeball {
-    width: min(420px, 25vw);
+    width: min(300px, 18vw);
     height: auto;
     cursor: pointer;
     transition: transform 0.3s ease, filter 0.3s ease;
@@ -397,7 +412,7 @@ h1::after {
     width: 100%;
 }
 
-/* ===================== POKEMON STATS ===================== */
+/* ===================== POCKET CRITTER STATS ===================== */
 .stats-block {
     display: flex;
     flex-direction: column;
@@ -416,7 +431,7 @@ h1::after {
 }
 
 .type-badge {
-    font-size: clamp(0.3rem, min(1.6vh, 2.2vw), 0.85rem);
+    font-size: clamp(0.45rem, min(2.2vh, 3.1vw), 1.1rem);
     font-weight: bold;
     color: #fff;
     padding: 1px 8px;
@@ -438,9 +453,10 @@ h1::after {
 .type-ice { background: #74b9ff; }
 .type-fighting { background: #d35400; }
 .type-normal { background: #95a5a6; }
+.type-magic { background: linear-gradient(135deg, #6c5ce7, #a29bfe); }
 
 .stats-hp {
-    font-size: clamp(0.35rem, min(1.8vh, 2.5vw), 0.95rem);
+    font-size: clamp(0.5rem, min(2.4vh, 3.3vw), 1.2rem);
     font-weight: bold;
     color: #c0392b;
     text-shadow: 0 1px 1px rgba(255,255,255,0.5);
@@ -466,7 +482,7 @@ h1::after {
 }
 
 .attack-name {
-    font-size: clamp(0.3rem, min(1.6vh, 2.2vw), 0.85rem);
+    font-size: clamp(0.45rem, min(2.2vh, 3.1vw), 1.1rem);
     font-weight: bold;
     color: #3a2a1a;
     text-shadow: 0 1px 1px rgba(255,255,255,0.4);
@@ -474,7 +490,7 @@ h1::after {
 }
 
 .attack-dmg {
-    font-size: clamp(0.35rem, min(1.8vh, 2.5vw), 0.95rem);
+    font-size: clamp(0.5rem, min(2.4vh, 3.3vw), 1.2rem);
     font-weight: bold;
     color: #c0392b;
     text-shadow: 0 1px 1px rgba(255,255,255,0.4);
@@ -482,7 +498,7 @@ h1::after {
 }
 
 .attack-desc {
-    font-size: clamp(0.25rem, min(1.2vh, 1.6vw), 0.7rem);
+    font-size: clamp(0.4rem, min(1.7vh, 2.3vw), 0.95rem);
     font-style: italic;
     color: #5a4a3a;
     line-height: 1.2;
@@ -491,7 +507,7 @@ h1::after {
 .stats-footer {
     display: flex;
     justify-content: space-between;
-    font-size: clamp(0.25rem, min(1.2vh, 1.6vw), 0.7rem);
+    font-size: clamp(0.4rem, min(1.7vh, 2.3vw), 0.95rem);
     color: #5a4a3a;
 }
 
@@ -502,7 +518,7 @@ h1::after {
 }
 
 .stats-footer .footer-badge {
-    font-size: clamp(0.2rem, min(1vh, 1.3vw), 0.6rem);
+    font-size: clamp(0.35rem, min(1.5vh, 2vw), 0.85rem);
     padding: 0 5px;
     border-radius: 6px;
     color: #fff;
@@ -582,7 +598,9 @@ h1::after {
 /* --- Closed Scroll --- */
 #scroll-closed-container {
     cursor: pointer;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #scroll-closed-container img {
@@ -636,7 +654,9 @@ h1::after {
 }
 
 #scroll-open-container.revealing {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     animation: scrollUnroll 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
@@ -664,13 +684,14 @@ h1::after {
     height: 64%;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    padding: 10px 15px;
+    align-items: center;
+    padding: 10px 12px;
     box-sizing: border-box;
     overflow-y: auto;
     clip-path: inset(0 50% 0 50%);
-    background: rgba(245, 235, 210, 0.65);
+    background: rgba(245, 235, 210, 0.55);
     border-radius: 4px;
+    z-index: 1;
 }
 
 #scroll-text-area.text-revealed {
@@ -679,7 +700,7 @@ h1::after {
 
 @keyframes textRevealWipe {
     0%   { clip-path: inset(0 50% 0 50%); }
-    100% { clip-path: inset(0 0% 0 0%); }
+    100% { clip-path: inset(0 0 0 0); }
 }
 
 #scroll-message-text {
@@ -741,8 +762,8 @@ h1::after {
     50% { filter: drop-shadow(0 0 50px rgba(255,215,0,1)) drop-shadow(0 0 80px rgba(255,180,0,0.4)); }
 }
 
-/* ===================== POKEDEX ===================== */
-#pokedex-btn {
+/* ===================== CARD DECK ===================== */
+#card-deck-btn {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -760,9 +781,9 @@ h1::after {
     transition: background 0.3s;
 }
 
-#pokedex-btn:hover { background: #a6733b; }
+#card-deck-btn:hover { background: #a6733b; }
 
-#pokedex-overlay {
+#card-deck-overlay {
     display: none;
     position: fixed;
     top: 0; left: 0;
@@ -773,7 +794,7 @@ h1::after {
     align-items: center;
 }
 
-#pokedex-panel {
+#card-deck-panel {
     background: linear-gradient(145deg, #1a0f0a, #2a1a10);
     border: 3px solid #8b5a2b;
     border-radius: 15px;
@@ -784,7 +805,7 @@ h1::after {
     overflow-y: auto;
 }
 
-#pokedex-panel h2 {
+#card-deck-panel h2 {
     font-family: 'Cinzel Decorative', serif;
     background: linear-gradient(180deg, #ffd700, #b8860b);
     -webkit-background-clip: text;
@@ -794,7 +815,7 @@ h1::after {
     margin-top: 0;
 }
 
-.pokedex-hint {
+.card-deck-hint {
     color: #ffd700;
     font-family: 'Cinzel', serif;
     font-size: 0.85rem;
@@ -802,7 +823,7 @@ h1::after {
     text-shadow: 0 1px 3px rgba(0,0,0,0.6);
 }
 
-.pokedex-grid {
+.card-deck-grid {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -810,7 +831,7 @@ h1::after {
     align-items: center;
 }
 
-.pokedex-entry {
+.card-deck-entry {
     background: rgba(0,0,0,0.5);
     border: 2px solid #5c3a18;
     border-radius: 10px;
@@ -825,24 +846,24 @@ h1::after {
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.pokedex-entry:hover {
+.card-deck-entry:hover {
     border-color: #daa520;
     box-shadow: 0 0 10px rgba(255,215,0,0.3);
 }
 
-.pokedex-card-wrap {
+.card-deck-card-wrap {
     position: relative;
     display: inline-block;
 }
 
-.pokedex-card-wrap img {
+.card-deck-card-wrap img {
     max-width: 100%;
     max-height: 60vh;
     display: block;
     border-radius: 6px;
 }
 
-.pokedex-message {
+.card-deck-message {
     position: absolute;
     top: 67%;
     left: 35%;
@@ -856,42 +877,42 @@ h1::after {
     overflow: hidden;
 }
 
-.pokedex-message .stats-block {
+.card-deck-message .stats-block {
     gap: 1px;
 }
 
-.pokedex-message .stats-block > * {
+.card-deck-message .stats-block > * {
     opacity: 1;
     transform: none;
     transition: none;
 }
 
-.pokedex-message .type-badge,
-.pokedex-message .attack-name {
+.card-deck-message .type-badge,
+.card-deck-message .attack-name {
     font-size: clamp(0.25rem, 0.6vw, 0.45rem);
     padding: 0 4px;
 }
 
-.pokedex-message .stats-hp,
-.pokedex-message .attack-dmg {
+.card-deck-message .stats-hp,
+.card-deck-message .attack-dmg {
     font-size: clamp(0.25rem, 0.65vw, 0.5rem);
 }
 
-.pokedex-message .attack-desc {
+.card-deck-message .attack-desc {
     font-size: clamp(0.2rem, 0.45vw, 0.35rem);
     line-height: 1.1;
 }
 
-.pokedex-message .stats-footer {
+.card-deck-message .stats-footer {
     font-size: clamp(0.2rem, 0.45vw, 0.35rem);
 }
 
-.pokedex-message .stats-footer .footer-badge {
+.card-deck-message .stats-footer .footer-badge {
     font-size: clamp(0.18rem, 0.4vw, 0.3rem);
     padding: 0 3px;
 }
 
-.pokedex-message p {
+.card-deck-message p {
     font-size: clamp(0.4rem, 0.75vw, 0.65rem);
     line-height: 1.3;
     font-weight: bold;
@@ -903,13 +924,13 @@ h1::after {
     word-wrap: break-word;
 }
 
-.pokedex-entry.locked {
+.card-deck-entry.locked {
     cursor: default;
     opacity: 0.4;
     padding: 40px 15px;
 }
 
-.pokedex-entry.locked:hover {
+.card-deck-entry.locked:hover {
     border-color: #5c3a18;
     box-shadow: none;
 }
@@ -1022,12 +1043,12 @@ h1::after {
 
     /* --- Pokeballs --- */
     .pokeball {
-        width: min(420px, 28vw);
+        width: min(300px, 20vw);
     }
 
     #pokeball-container {
-        max-width: calc(min(420px, 28vw) * 3 + 50px);
-        gap: 10px;
+        max-width: calc(min(300px, 20vw) * 4 + 50px);
+        gap: 8px;
     }
 
     /* --- Progress Tracker --- */
@@ -1063,7 +1084,12 @@ h1::after {
 
     /* --- Scrolls --- */
     #scroll-open-container img {
-        max-height: 70vh;
+        max-width: 95vw;
+        max-height: 50vh;
+    }
+
+    #scroll-closed-container img {
+        max-height: 40vh;
     }
 
     #scroll-text-area {
@@ -1091,43 +1117,43 @@ h1::after {
         padding: 0 15px;
     }
 
-    /* --- Pokedex --- */
-    #pokedex-panel {
+    /* --- Card Deck --- */
+    #card-deck-panel {
         padding: 15px;
         border-radius: 10px;
     }
 
-    #pokedex-panel h2 {
+    #card-deck-panel h2 {
         font-size: 1.3rem;
     }
 
-    .pokedex-hint {
+    .card-deck-hint {
         font-size: 0.7rem;
     }
 
-    .pokedex-card-wrap img {
+    .card-deck-card-wrap img {
         max-height: 50vh;
     }
 
-    .pokedex-message .type-badge,
-    .pokedex-message .attack-name {
+    .card-deck-message .type-badge,
+    .card-deck-message .attack-name {
         font-size: clamp(0.3rem, 1.8vw, 0.5rem);
     }
 
-    .pokedex-message .stats-hp,
-    .pokedex-message .attack-dmg {
+    .card-deck-message .stats-hp,
+    .card-deck-message .attack-dmg {
         font-size: clamp(0.3rem, 2vw, 0.55rem);
     }
 
-    .pokedex-message .attack-desc {
+    .card-deck-message .attack-desc {
         font-size: clamp(0.25rem, 1.3vw, 0.4rem);
     }
 
-    .pokedex-message .stats-footer {
+    .card-deck-message .stats-footer {
         font-size: clamp(0.25rem, 1.3vw, 0.4rem);
     }
 
-    .pokedex-message .stats-footer .footer-badge {
+    .card-deck-message .stats-footer .footer-badge {
         font-size: clamp(0.22rem, 1.1vw, 0.35rem);
     }
 
